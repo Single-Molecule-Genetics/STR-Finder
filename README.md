@@ -78,4 +78,4 @@ If you'd like to contribute:
 3. Submit a pull request with a description of your changes.
 
 ---
-🚀 **Developed for Bioinformatics Research and STR Analysis!**
+**Developed for Bioinformatics Research and STR Analysis!**
