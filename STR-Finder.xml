@@ -1,0 +1,71 @@
+<tool id="str_finder" name="STR Finder" version="1.1.0">
+    <description>Detect Short Tandem Repeats (STRs) in a Genome</description>
+    
+    <!-- Requirements: Python and pyfasta -->
+    <requirements>
+        <requirement type="package">python</requirement>
+        <requirement type="package">pyfasta</requirement>
+    </requirements>
+
+    <!-- Command that Galaxy will run -->
+    <command>
+        python '$__tool_directory__/script.py' 
+        -g '$input_fasta' 
+        -o '$output_directory' 
+        --min_mono '$min_mono' 
+        --min_di '$min_di' 
+        --min_tri '$min_tri'
+        > '$output_file'
+    </command>
+
+    <!-- Inputs Section -->
+    <inputs>
+        <!-- FASTA File Input -->
+        <param name="input_fasta" type="data" format="fasta" label="Genome FASTA File" help="Upload a genome file in FASTA format." />
+
+        <!-- Output Directory -->
+        <param name="output_directory" type="text" label="Output Directory" value="results/" help="Specify where the output files will be saved." />
+
+        <!-- STR Length Thresholds -->
+        <param name="min_mono" type="integer" value="5" label="Min Mononucleotide Repeat" help="Minimum mononucleotide STR length (default: 5)." />
+        <param name="min_di" type="integer" value="6" label="Min Dinucleotide Repeat" help="Minimum dinucleotide STR length (default: 6)." />
+        <param name="min_tri" type="integer" value="4" label="Min Trinucleotide Repeat" help="Minimum trinucleotide STR length (default: 4)." />
+    </inputs>
+
+    <!-- Outputs Section -->
+    <outputs>
+        <data name="output_file" format="pickle" label="STR Results File" />
+    </outputs>
+
+    <!-- Help Section -->
+    <help>
+        == STR Finder ==
+        This tool detects Short Tandem Repeats (STRs) in a genome FASTA file.
+
+        === Input ===
+        - Upload a FASTA file.
+        - Specify minimum repeat lengths.
+
+        === Output ===
+        The output pickle file contains a Python dictionary with structured STR data. Each key represents a different
+        method of organizing the STR coordinates: • ref_str: A dictionary where chromosomes serve as keys, and
+        the associated values are lists of STR coordinate ranges present on each chromosome.
+        • ref_info: A dictionary with chromosomes as keys and their corresponding FASTA-formatted sequences as values.
+        • chromosome_STRdict: A dictionary with chromosomes as keys, each containing a nested dictionary where the start
+        position of an STR is the key, and the corresponding annotation—including the end position—is the value.
+        For example: I-430-435-6A.
+        • str_region_annotation: Similar to chromosome_STRdict, but instead of using only the start position as a key,
+        it utilizes ranges (start-end) in the nested dictionary.
+
+        This structured format allows for easy retrieval, processing, and further analysis of STR data.
+
+        === Example Command ===
+        python script.py -g genome.fa -o results/ --min_mono 5 --min_di 6 --min_tri 4
+    </help>
+
+    <!-- Citation -->
+    <citations>
+        <citation type="doi">10.1000/xyz123</citation>
+    </citations>
+
+</tool>
