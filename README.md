@@ -54,7 +54,7 @@ python script.py -g data/genome.fa -o results/ --min_mono 6 --min_di 8 --min_tri
 ## Output File Format
 The script outputs a **pickle file** named:
 ```
-CuteCV_STRs_{min_mono}m_{min_di}d_{min_tri}t.pickle
+Genome_{min_mono}m_{min_di}d_{min_tri}t.pickle
 ```
 The output pickle file contains a Python dictionary with structured STR data. Each key represents a different method of organizing the STR coordinates:
 	•	ref_str: A dictionary where chromosomes serve as keys, and the associated values are lists of STR coordinate ranges present on each chromosome.
