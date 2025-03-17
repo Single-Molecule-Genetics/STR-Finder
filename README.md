@@ -57,6 +57,14 @@ The script outputs a **pickle file** named:
 CuteCV_STRs_{min_mono}m_{min_di}d_{min_tri}t.pickle
 ```
 which contains structured data for STR analysis.
+The output pickle file contains a Python dictionary with structured STR data. Each key represents a different method of organizing the STR coordinates:
+	•	ref_str: A dictionary where chromosomes serve as keys, and the associated values are lists of STR coordinate ranges present on each chromosome.
+	•	ref_info: A dictionary with chromosomes as keys and their corresponding FASTA-formatted sequences as values.
+	•	chromosome_STRdict: A dictionary with chromosomes as keys, each containing a nested dictionary where the start position of an STR is the key, and the corresponding annotation—including the end position—is the value. For example: I-430-435-6A.
+	•	str_region_annotation: Similar to chromosome_STRdict, but instead of using only the start position as a key, it utilizes ranges (start-end) in the nested dictionary.
+
+This structured format allows for easy retrieval, processing, and further analysis of STR data.
+
 
 ## Why Use This Script?
 - **Efficient:** Uses optimized regex patterns to detect STRs quickly.
