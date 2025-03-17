@@ -77,7 +77,7 @@ def main():
                          args.min_mono, args.min_di, args.min_tri, ref_str, str_region_annotation, chromosome_STRdict)
 
     # Save results
-    output_filename = os.path.join(args.output, f"CuteCV_STRs_{args.min_mono}m_{args.min_di}d_{args.min_tri}t.pickle")
+    output_filename = os.path.join(args.output, f"Genome_{args.min_mono}m_{args.min_di}d_{args.min_tri}t.pickle")
     data_to_save = {
         'ref_str': ref_str,
         'ref_info': ref_info,
