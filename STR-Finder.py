@@ -1,3 +1,20 @@
+"""STR-Finder.py
+
+Author -- Shehab Moukbel Ali Aldawla
+Contact -- shehab.moukbel@jku.at
+
+his Python script is designed to detect Short Tandem Repeats (STRs) in a given genome FASTA file. STRs are repetitive
+DNA sequences that appear in various regions of the genome and can be crucial for genetic studies, forensic analysis,
+and evolutionary biology. Currently, the script only supports perfect repeats.
+
+=======  ==========  =================  ================================
+Version  Date        Author             Description
+1.1.0    2025-01-01  Shehab Moukbel      -
+=======  ==========  =================  ================================
+
+USAGE: python  STR-Finder.py -g /path/to/genome.fa -o /path/to/output --min_mono 5 --min_di 6 --min_tri 4
+"""
+
 import re
 import argparse
 import pickle
