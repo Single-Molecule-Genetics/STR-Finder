@@ -56,7 +56,6 @@ The script outputs a **pickle file** named:
 ```
 CuteCV_STRs_{min_mono}m_{min_di}d_{min_tri}t.pickle
 ```
-which contains structured data for STR analysis.
 The output pickle file contains a Python dictionary with structured STR data. Each key represents a different method of organizing the STR coordinates:
 	•	ref_str: A dictionary where chromosomes serve as keys, and the associated values are lists of STR coordinate ranges present on each chromosome.
 	•	ref_info: A dictionary with chromosomes as keys and their corresponding FASTA-formatted sequences as values.
