@@ -1,7 +1,8 @@
 # STR Finder for Genome Sequences
 
 ## Overview
-This Python script is designed to **detect Short Tandem Repeats (STRs)** in a given genome FASTA file. STRs are repetitive DNA sequences that appear in various regions of the genome and can be crucial for genetic studies, forensic analysis, and evolutionary biology. Currently, the script only supports perfect repeats.
+This Python script is designed to **detect Short Tandem Repeats (STRs)** in a given genome FASTA file. STRs are repetitive DNA sequences that appear in various regions of the genome and can be crucial for genetic studies, forensic analysis, and evolutionary biology. Currently, the script only supports perfect repeats. 
+The tool first applies regular expression (regex) pattern matching to detect perfect repeat stretches consisting of 1-, 2-, or 3-base pair motifs. STRs are defined based on a minimum repeat threshold of five consecutive repeats for mononucleotides and three for dinucleotides and trinucleotides. Next, STR-Finder localizes STRs within sequences flanked by unique 2-base pairs to ensure precise repeat identification. The algorithm then extracts repeat motifs, start and end positions, and calculates repeat length based on motif size and genomic coordinates. Finally, the identified STRs are annotated with chromosome number, genomic coordinates, and repeat length, with all results stored in structured dictionaries for downstream analysis.
 
 ## Features
 - Identifies **mononucleotide, dinucleotide, and trinucleotide repeats**.
