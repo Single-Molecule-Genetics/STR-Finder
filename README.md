@@ -1,9 +1,26 @@
 # STR Finder for Genome Sequences
 
 ## Overview
-This Python script is designed to **detect Short Tandem Repeats (STRs)** in a given genome FASTA file. STRs are repetitive DNA sequences that appear in various regions of the genome and can be crucial for genetic studies, forensic analysis, and evolutionary biology. Currently, the script only supports perfect repeats. 
-The tool first applies regular expression (regex) pattern matching to detect perfect repeat stretches consisting of 1-, 2-, or 3-base pair motifs. STRs are defined based on a minimum repeat threshold of five consecutive repeats for mononucleotides and three for dinucleotides and trinucleotides. Next, STR-Finder localizes STRs within sequences flanked by unique 2-base pairs to ensure precise repeat identification. The algorithm then extracts repeat motifs, start and end positions, and calculates repeat length based on motif size and genomic coordinates. Finally, the identified STRs are annotated with chromosome number, genomic coordinates, and repeat length, with all results stored in structured dictionaries for downstream analysis.
+This Python script is specifically designed to identify Short Tandem Repeats (STRs) within a given genome FASTA file. 
+STRs are repetitive DNA sequences that occur throughout the genome and play a crucial role in genetic studies, 
+forensic analysis, and evolutionary biology. At present, the script supports only perfect repeats.
 
+The detection process employs regular expressions (regex) to identify continuous repeat stretches composed of 
+mononucleotide (1-bp), dinucleotide (2-bp), and trinucleotide (3-bp) motifs. By default, STRs are defined based on
+the following minimum repeat thresholds, which can be adjusted as needed:
+* 	Five consecutive repeats for mononucleotides 
+*   Three consecutive repeats for dinucleotides and trinucleotides
+
+Once detected, STR-Finder leverages regex-based pattern matching to efficiently extract key STR features, including:
+* Repeat motif (sequence of the repeating unit)
+* Start and end positions in the genome 
+* Repeat length, calculated based on the motif size and genomic coordinates
+
+Finally, the identified STRs are annotated with chromosome number, genomic coordinates, and repeat length. 
+All results are stored in structured Python dictionaries, ensuring efficient data handling for downstream analysis.
+
+This tool provides user-configurable threshold settings, allowing flexibility to tailor the detection criteria based 
+on specific research requirements.
 ## Features
 - Identifies **mononucleotide, dinucleotide, and trinucleotide repeats**.
 - Uses **regular expressions (regex)** to efficiently search for STR patterns.
@@ -57,7 +74,8 @@ The script outputs a **pickle file** named:
 ```
 Genome_{min_mono}m_{min_di}d_{min_tri}t.pickle
 ```
-The output pickle file contains a Python dictionary with structured STR data. Each key represents a different method of organizing the STR coordinates:
+The output pickle file contains a Python dictionary with structured STR data. Each key represents a different method 
+of organizing the STR coordinates:
 	•	ref_str: A dictionary where chromosomes serve as keys, and the associated values are lists of STR coordinate ranges present on each chromosome.
 	•	ref_info: A dictionary with chromosomes as keys and their corresponding FASTA-formatted sequences as values.
 	•	chromosome_STRdict: A dictionary with chromosomes as keys, each containing a nested dictionary where the start position of an STR is the key, and the corresponding annotation—including the end position—is the value. For example: I-430-435-6A.
@@ -86,4 +104,6 @@ If you'd like to contribute:
 3. Submit a pull request with a description of your changes.
 
 ---
-**Developed for Bioinformatics Research and STR Analysis!**
+## About Us  
+This tool was developed by **Shehab Moukbel ALi Aldawla** as part of the **Single Molecule Genetics (SMG) team** at JKU.  
+For more information, visit our [team page](https://www.jku.at/institut-fuer-biophysik/ueber-uns/team/single-molecule-genetics-irene-tiemann-boege/) or join our community discussions.
